@@ -1,0 +1,17 @@
+# send a comment to the issue when it is opened
+name: Message
+on:
+  issues:
+    types: [opened]
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Thanks for opening this issue!
+            I will take a look at it as soon as possible.
+            Please be patient.
